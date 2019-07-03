@@ -1,0 +1,12 @@
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\bin\Debug\ScreenCapture.exe.config
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\bin\Debug\ScreenCapture.exe
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\bin\Debug\ScreenCapture.pdb
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\bin\Debug\ScreenCapture.xml
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\obj\Debug\ScreenCapture.vbprojAssemblyReference.cache
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\obj\Debug\ScreenCapture.Resources.resources
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\obj\Debug\ScreenCapture.vbproj.GenerateResource.cache
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\obj\Debug\ScreenCapture.vbproj.CoreCompileInputs.cache
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\obj\Debug\ScreenCapture.exe
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\obj\Debug\ScreenCapture.xml
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\obj\Debug\ScreenCapture.pdb
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\ScreenCapture\obj\Debug\ScreenCapture.MainProject.resources
