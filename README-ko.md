@@ -1,0 +1,25 @@
+# OverHits 프로젝트
+
+![OverHits](https://github.com/band64-pixel/OverHits/blob/master/OverHits/Resources/overhits.png)
+#### 'PuryStudio'에서 'band64-pixel'이 제작
+
+##### "저희는 절대 적들에게 지지 않을겁니다!" - band64-pixel
+
+## *공지사항*
+
+### 프로젝트 중단.
+안녕하세요 여러분! OverHits는 아직도 오버워치에서 핵이 잘 동작하긴 합니다만, 저희가 밴을 먹었네요 ㅋㅋㅋㅋ :(
+
+그래서, 저희는 오버워치에서 밴이 되는 것을 고칠 것입니다. 이 프로젝트는 베타라서, 정말 짜증나고 에임하기 많이 어려울 겁니다.
+
+하지만, 저희는 언젠간 돌아올 것이고 프로젝트를 고칠 것입니다...
+
+
+##### 지금 이 프로젝트는 중단 되었으므로, 이제 이 프로젝트는 '오픈 소스'입니다. (지금 한번 라이센스를 확인 해보세요!)
+
+## OverHits에 대하여
+#### 언어: 한국어, [영어](https://github.com/band64-pixel/OverHits/blob/master/README.md)?로 언어를 바꾸시겠습니까?
+
+OverHits는 오버워치의 에임핵입니다.
+
+끝!! 매우 간단하군요!
