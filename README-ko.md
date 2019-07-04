@@ -18,8 +18,10 @@
 ##### 지금 이 프로젝트는 중단 되었으므로, 이제 이 프로젝트는 '오픈 소스'입니다. (지금 한번 라이센스를 확인 해보세요!)
 
 ## OverHits에 대하여
-#### 언어: 한국어, [영어](https://github.com/band64-pixel/OverHits/blob/master/README.md)?로 언어를 바꾸시겠습니까?
+#### 언어: 한국어, [영어](https://github.com/band64-pixel/OverHits/blob/master/README.md)로 언어를 바꾸시겠습니까?
 
 OverHits는 오버워치의 에임핵입니다.
+
+##### 설치하기 전에, [AutoItX3](https://www.autoitscript.com/site/autoit/downloads/)를 다운로드 해야합니다!
 
 끝!! 매우 간단하군요!
