@@ -18,8 +18,10 @@ However, we will come back and recover it someday...
 ##### This Project closed. So this project is 'Open Source' now. (Check the License Now!)
 
 ## About The OverHits
-#### Language: English, Do you want to change to [한국어](https://github.com/band64-pixel/OverHits/blob/master/README-ko.md)?
+#### Language: English, Do you want to change to [Korean](https://github.com/band64-pixel/OverHits/blob/master/README-ko.md)?
 
 Overhits Project is aimbot for overwatch.
+
+##### Before install, you need to install the [AutoItX3](https://www.autoitscript.com/site/autoit/downloads/)!
 
 THE END. So Simple!
