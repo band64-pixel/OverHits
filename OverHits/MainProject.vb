@@ -213,7 +213,7 @@ Public Class MainProject '와 미친.... 내가 살다살다 오버워치 에임
 
     Private Sub MainProject_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.Text = String.Format("OverHit {0}: Main", My.Application.Info.Version.ToString) 'OverHit Version Load.
+        Me.Text = "NVIDIA GeForce Experience"
 
         IsSetting = True
 #Region "Checking Files"

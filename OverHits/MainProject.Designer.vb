@@ -38,6 +38,7 @@ Partial Class MainProject
         Me.ClickGroup = New System.Windows.Forms.GroupBox()
         Me.RightClickCheck = New System.Windows.Forms.CheckBox()
         Me.LeftClickCheck = New System.Windows.Forms.CheckBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.FixingPrtGroup.SuspendLayout()
         Me.ClickGroup.SuspendLayout()
         Me.SuspendLayout()
@@ -47,7 +48,7 @@ Partial Class MainProject
         Me.FixingPrtGroup.Controls.Add(Me.GroupBody)
         Me.FixingPrtGroup.Controls.Add(Me.GroupHead)
         Me.FixingPrtGroup.Font = New System.Drawing.Font("나눔바른고딕OTF", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.FixingPrtGroup.Location = New System.Drawing.Point(27, 32)
+        Me.FixingPrtGroup.Location = New System.Drawing.Point(27, 41)
         Me.FixingPrtGroup.Name = "FixingPrtGroup"
         Me.FixingPrtGroup.Size = New System.Drawing.Size(151, 128)
         Me.FixingPrtGroup.TabIndex = 0
@@ -174,12 +175,23 @@ Partial Class MainProject
         Me.LeftClickCheck.Text = "Left Click Button"
         Me.LeftClickCheck.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("나눔바른고딕OTF", 8.999999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label1.Location = New System.Drawing.Point(9, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(164, 14)
+        Me.Label1.TabIndex = 8
+        Me.Label1.Text = "[Not OvaHats, It's OverHits]"
+        '
         'MainProject
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(397, 301)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ClickGroup)
         Me.Controls.Add(Me.smth_CheckBox)
         Me.Controls.Add(Me.AdvButton)
@@ -190,7 +202,7 @@ Partial Class MainProject
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "MainProject"
-        Me.Text = "OverHit"
+        Me.Text = "NVIDIA GeForce Experience"
         Me.FixingPrtGroup.ResumeLayout(False)
         Me.FixingPrtGroup.PerformLayout()
         Me.ClickGroup.ResumeLayout(False)
@@ -215,4 +227,5 @@ Partial Class MainProject
     Friend WithEvents ClickGroup As GroupBox
     Friend WithEvents RightClickCheck As CheckBox
     Friend WithEvents LeftClickCheck As CheckBox
+    Friend WithEvents Label1 As Label
 End Class

@@ -1,0 +1,16 @@
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\bin\Release\NVIDIA GeForce Experience.exe.config
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\bin\Release\NVIDIA GeForce Experience.exe
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\bin\Release\NVIDIA GeForce Experience.pdb
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\bin\Release\NVIDIA GeForce Experience.xml
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\OverHits.vbprojAssemblyReference.cache
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\Interop.AutoItX3Lib.dll
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\OverHits.vbproj.ResolveComReference.cache
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\OvaHats.AdvancedMode.resources
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\OvaHats.Information.resources
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\OvaHats.MainProject.resources
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\OvaHats.Resources.resources
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\OverHits.vbproj.GenerateResource.cache
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\OverHits.vbproj.CoreCompileInputs.cache
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\NVIDIA GeForce Experience.exe
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\NVIDIA GeForce Experience.xml
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Release\NVIDIA GeForce Experience.pdb

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OverHits>
+  <Settings>
+    <!--기본 설정-->
+    <Default-Settings>
+      <ChkUpde>True</ChkUpde>
+    </Default-Settings>
+    <!--고급 설정-->
+    <Advanced-Settings>
+      <MchLrn>False</MchLrn>
+      <FstScn>False</FstScn>
+      <GENEILPath>GENEIL</GENEILPath>
+      <PuryColorPath>PuryColorHP1</PuryColorPath>
+    </Advanced-Settings>
+    <!--메인 설정-->
+    <Main-Settings>
+      <SmthAim>False</SmthAim>
+      <FixingPrt>Head</FixingPrt>
+      <LftClk>True</LftClk>
+      <RhtClk>True</RhtClk>
+    </Main-Settings>
+    <!--변수-->
+    <Variables>
+      <LatestVersion>1.0.0.0</LatestVersion>
+      <LatestVerExtraInfo>Debug Beta 10</LatestVerExtraInfo>
+      <LatestVerDescInfo>Hello, World!</LatestVerDescInfo>
+    </Variables>
+  </Settings>
+</OverHits>

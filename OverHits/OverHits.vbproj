@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{4EA2A3D2-3980-4BC8-BCA2-5C1CE3609F1C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>OverHits.My.MyApplication</StartupObject>
-    <RootNamespace>OverHits</RootNamespace>
-    <AssemblyName>OverHits</AssemblyName>
+    <StartupObject>OvaHats.My.MyApplication</StartupObject>
+    <RootNamespace>OvaHats</RootNamespace>
+    <AssemblyName>NVIDIA GeForce Experience</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -37,7 +37,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>OverHits.xml</DocumentationFile>
+    <DocumentationFile>NVIDIA GeForce Experience.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
@@ -48,7 +48,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>OverHits.xml</DocumentationFile>
+    <DocumentationFile>NVIDIA GeForce Experience.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
