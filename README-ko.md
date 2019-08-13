@@ -9,7 +9,7 @@
 
 ## *공지사항*
 
-### 반드시 ['작동 원리 텍스트'](https://github.com/band64-pixel/OverHits/blob/master/HowItWorks.md)를 읽어주세요!
+### 반드시 ['작동 원리 텍스트'](https://github.com/band64-pixel/OverHits/blob/master/HowItWorks-ko.md)를 읽어주세요!
 
 ### 프로젝트 중단.
 안녕하세요 여러분! OverHits는 아직도 오버워치에서 핵이 잘 동작하긴 합니다만, 저희가 밴을 먹었네요 ㅋㅋㅋㅋ :(
