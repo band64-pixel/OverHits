@@ -1,13 +1,22 @@
 ﻿Imports System.IO
 Imports System.Xml
-Imports AutoItX3Lib
+Imports System.Drawing.Imaging
+Imports OvaHats.All4Colors
+Imports OvaHats.scr
+Imports OvaHats.msp
 
-Public Class MainProject '와 미친.... 내가 살다살다 오버워치 에임핵은 처음 만들어본다 ㄷㄷ
-
+Public Class MainProject 'Overwatch Aim Assist Program "OverHits v7.8.2 Beta 12"
+#Region "OverHits Settings"
     Public IsSaved As Boolean = True
     Public IsSetting As Boolean = False
 
     Public MchLrnWrn As Boolean = True
+#End Region
+
+    ''' <summary>
+    ''' Overwatch Process Name.
+    ''' </summary>
+    Private Const overwatch_processName As String = "Overwatch"
 
 #Region "Variable: Pixels"
     Public AntiShakeX As Integer = Math.Floor(SystemInformation.PrimaryMonitorSize.Height / 160)
@@ -32,14 +41,19 @@ Public Class MainProject '와 미친.... 내가 살다살다 오버워치 에임
     Public AimPointR As Integer = SystemInformation.PrimaryMonitorSize.Width - NearAimScanR
     Public AimPointB As Integer = SystemInformation.PrimaryMonitorSize.Height - NearAimScanB
 #End Region
-#Region "Variable: HeadShot"
+#Region "Variable: Headshot, Range"
     Public Enum HeadShot
         Headshot
         Bodyshot
     End Enum
+
+    Public Enum HPRange
+        r200
+        PuryHP
+    End Enum
 #End Region
 #Region "Variable: XML Settings"
-    'OverHits 1.0.0.0 Beta 10
+    'OverHits v7.8.2 Beta 12
 
     'Default Settings
     Public Shared ChkUpde As Boolean 'Check Update
@@ -62,111 +76,65 @@ Public Class MainProject '와 미친.... 내가 살다살다 오버워치 에임
     Public Shared LatestVerDescInfo As String
 #End Region
 
-    Declare Function mouse_event Lib "user32.dll" Alias "mouse_event" (ByVal dwFlags As Int32, ByVal dX As Int32, ByVal dY As Int32, ByVal cButtons As Int32, ByVal dwExtraInfo As Int32) As Boolean
     Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As Integer) As Short
 
     Public Function ColorSearch() As Boolean
         Try
             Dim a, b As New Stopwatch
-            Dim au3, au3b As New AutoItX3
             a.Start()
 
-            '저번까지만 해도 나는 Visual Basic .NET에서 직접 픽셀서치 구현을 노가다로 해야했는데 ㅠㅠ
-            'AutoIt으로 픽셀서치 한방으로 하니 편-안!!
-            For Each PuryColor As Color In All4Colors.Pury2_N1
-                au3.PixelSearch(900, 450, 1030, 600, All4Colors.ColorToInt(PuryColor), 24)
-                If au3.error = 0 Then
+            Dim c As Process() = Process.GetProcessesByName(overwatch_processName)
+            If c.Count = 0 Then
+                Throw New KeyNotFoundException("Overwatch not found!")
+            End If
 
-                    Do 'The Second of AimSearch!
-                        b.Start()
-                        Dim AimPixels As Object = au3b.PixelSearch(920, 460, 1010, 510, All4Colors.ColorToInt(PuryColor), 24)
-                        If au3b.error = 0 Then
+            Dim s As IntPtr = c(0).MainWindowHandle
+            Dim bit As Bitmap = PrintWindow(s)
 
-                            Dim AimX As Integer = AimPixels(0) - ZeroX
-                            Dim AimY As Integer = AimPixels(1) - ZeroY
-                            Dim DirX As Integer = -1
-                            Dim DirY As Integer = -1
+            For y As Integer = 400 To 700
+                For x As Integer = 700 To 1200
 
-                            If AimX > 0 Then
-                                DirX = 1
-                            End If
-                            If AimY > 0 Then
-                                DirY = 1
-                            End If
+                    Dim GetPix As Color = bit.GetPixel(x, y)
+                    If IsRed(GetPix, HPRange.r200) Then
 
-                            Dim AimOffsetX As Integer = AimX * DirX
-                            Dim AimOffsetY As Integer = AimY * DirY
+                        Dim AimX As Integer = x - ZeroX
+                        Dim AimY As Integer = y - ZeroY
 
-                            If FixingPrt = HeadShot.Headshot Then
+                        If FixingPrt = HeadShot.Headshot Then
 
-                                'Headshot.
-                                Dim ran As New Random
-                                Dim MoveX As Integer = Math.Floor(Math.Sqrt(AimOffsetX))
-                                Dim MoveY As Integer = Math.Floor(Math.Sqrt(AimOffsetY)) + ran.Next(40, 50)
-
-                                mouse_event(&H1, MoveX, MoveY, 0, 0)
-                                For i As Integer = ran.Next(1, 3) To ran.Next(5, 7)
-                                    Dim rdu As New Random
-                                    Dim pm As Boolean = Convert.ToBoolean(rdu.Next(0, 10))
-
-                                    If pm Then
-                                        For q As Integer = 0 To i - 1
-                                            mouse_event(&H1, 0, -i, 0, 0)
-                                        Next
-                                    Else
-                                        For q As Integer = 0 To i - 1
-                                            mouse_event(&H1, 0, i, 0, 0)
-                                        Next
-                                    End If
-                                Next
-
-                            ElseIf FixingPrt = HeadShot.Bodyshot Then
-
-                                'Bodyshot.
-                                Dim ran As New Random
-                                Dim MoveX As Integer = Math.Floor(Math.Sqrt(AimOffsetX))
-                                Dim MoveY As Integer = Math.Floor(Math.Sqrt(AimOffsetY)) + ran.Next(70, 80)
-
-                                mouse_event(&H1, MoveX, MoveY, 0, 0)
-                                For i As Integer = ran.Next(1, 5) To ran.Next(7, 10)
-                                    Dim rdu As New Random
-                                    Dim pm As Boolean = Convert.ToBoolean(rdu.Next(0, 10))
-
-                                    If pm Then
-                                        For q As Integer = 0 To i - 1
-                                            mouse_event(&H1, 0, -q, 0, 0)
-                                        Next
-                                    Else
-                                        For q As Integer = 0 To i - 1
-                                            mouse_event(&H1, 0, q, 0, 0)
-                                        Next
-                                    End If
-                                Next
-
+                            'Headshot.
+                            If SmthAim Then
+                                Dim m2 As Boolean = MoveToSmooth(New Point(AimX + 30, AimY))
+                            Else
+                                mouse_event(&H1, AimX + 30, AimY + 50, 0, 0)
+                                'MoveLikAimbot(New Point(AimX, AimY + 50))
+                                'PostMessage(s, WMessages.WM_MOUSEMOVE, 0, New IntPtr(x + (y * 65536)))
                             End If
 
-                            b.Stop()
-                            Debug.WriteLine("True: (" & AimPixels(0) & ", " & AimPixels(1) & "), " & b.ElapsedMilliseconds & "ms")
+                        ElseIf FixingPrt = HeadShot.Bodyshot Then
 
-                        Else
-                            b.Stop()
-                            Debug.WriteLine("False: " & b.ElapsedMilliseconds & "ms")
+                            'Bodyshot.
+                            If SmthAim Then
+                                Dim m2 As Boolean = MoveToSmooth(New Point(AimX, AimY - 50))
+                            Else
+                                mouse_event(&H1, AimX, AimY - 50, 0, 0)
+                            End If
+
                         End If
-                    Loop Until 10
 
-                    a.Stop()
-                    Debug.WriteLine("True: " & a.ElapsedMilliseconds & "ms")
+                        a.Stop()
+                        Debug.WriteLine("True: " & a.ElapsedMilliseconds & "ms")
+                        Return True
 
-                    Return True
+                    Else
+                        Continue For
+                    End If
 
-                Else
-                    Continue For
-
-                    a.Stop()
-                    Debug.WriteLine("False: " & a.ElapsedMilliseconds & "ms")
-                End If
+                Next
             Next
 
+            a.Stop()
+            Debug.WriteLine("False: " & a.ElapsedMilliseconds & "ms")
             Return False
 
         Catch ex As Exception
@@ -188,18 +156,17 @@ Public Class MainProject '와 미친.... 내가 살다살다 오버워치 에임
             Dim j As Integer = 0 '1 픽셀서치 성공 횟수.
             Dim q As Integer = 0 '2 픽셀서치 성공 횟수.
             For fi As Integer = 0 To i - 1
-                Dim au3, au3b As New AutoItX3
 
-                au3.PixelSearch(900, 450, 1030, 600, All4Colors.ColorToInt(PuryColor), 24)
-                If au3.error = 0 Then
-                    j += 1
+                'au3.PixelSearch(900, 450, 1030, 600, All4Colors.ColorToInt(PuryColor), 24)
+                'If au3.error = 0 Then
+                j += 1
 
-                    au3b.PixelSearch(920, 460, 1010, 510, All4Colors.ColorToInt(PuryColor), 24)
-                    If au3b.error = 0 Then
-                        q += 1
-                    End If
+                'au3b.PixelSearch(920, 460, 1010, 510, All4Colors.ColorToInt(PuryColor), 24)
+                'If au3b.error = 0 Then
+                q += 1
+                'End If
 
-                End If
+                'End If
 
             Next
 
@@ -264,7 +231,7 @@ Public Class MainProject '와 미친.... 내가 살다살다 오버워치 에임
             GroupHead.Checked = True
             GroupBody.Checked = False
         ElseIf FixingPrt = HeadShot.Bodyshot Then
-        GroupHead.Checked = False
+            GroupHead.Checked = False
             GroupBody.Checked = True
         End If
         LeftClickCheck.Checked = LftClk
@@ -278,6 +245,8 @@ Public Class MainProject '와 미친.... 내가 살다살다 오버워치 에임
 
         START_AIM.Start()
         STOP_AIM.Start()
+
+        'ExtractPlayerAsRed(New Bitmap("hpbar1.png")).Save("hpbar_.png")
     End Sub
 
     Public Function MainProject_UpdateSettings() As Boolean
@@ -329,11 +298,7 @@ Public Class MainProject '와 미친.... 내가 살다살다 오버워치 에임
     End Sub
 
     Private Sub ColorSearch_Timer_Tick(sender As Object, e As EventArgs) Handles ColorSearch_Timer.Tick
-        If GetAsyncKeyState(1) AndAlso LftClk Then
-            ColorSearch()
-        End If
-
-        If GetAsyncKeyState(2) AndAlso RhtClk Then
+        If GetAsyncKeyState(1) AndAlso LftClk Or GetAsyncKeyState(2) AndAlso RhtClk Then
             ColorSearch()
         End If
     End Sub
@@ -365,6 +330,17 @@ Public Class MainProject '와 미친.... 내가 살다살다 오버워치 에임
                 srt_aim.ForeColor = Color.Blue
 
                 'PixelSearch.
+                Dim c As Process() = Process.GetProcessesByName(overwatch_processName)
+                If c.Count = 0 Then
+                    Throw New KeyNotFoundException("Overwatch not found!")
+                End If
+
+                Dim s As IntPtr = c(0).MainWindowHandle
+                If s.ToInt32 = 0 Then
+                    Throw New KeyNotFoundException("Overwatch not found!")
+                Else
+                    PrintWindow(s).Save("capture.png", ImageFormat.Png)
+                End If
                 ColorSearch_Timer.Start()
             End If
         Catch ex As Exception
@@ -512,94 +488,4 @@ Public Class MainProject '와 미친.... 내가 살다살다 오버워치 에임
             MessageBox.Show("Error - " & ex.Message & vbNewLine & "Error Message: " & ex.StackTrace, Me.Text & ": Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-End Class
-
-Public Class All4Colors
-    '구현 방식: OverHits: MainProject에서 스크린샷 bmp / 스크린샷 픽셀 색을 주면 색 데이터들로 스캔을 해서 스캔이 True일 때는 그 색을 Return함.
-
-#Region "Scanning Colors 1"
-    Public Shared ReadOnly Pury1_N1 As Color() = New Color(28) {Color.FromArgb(216, 42, 34), Color.FromArgb(255, 0, 19),
-        Color.FromArgb(238, 64, 38), Color.FromArgb(233, 68, 44), Color.FromArgb(235, 69, 42),
-        Color.FromArgb(234, 68, 41), Color.FromArgb(234, 75, 49), Color.FromArgb(235, 67, 43),
-        Color.FromArgb(232, 66, 43), Color.FromArgb(241, 82, 56), Color.FromArgb(231, 73, 49),
-        Color.FromArgb(235, 57, 26), Color.FromArgb(230, 46, 19), Color.FromArgb(209, 58, 31),
-        Color.FromArgb(238, 52, 23), Color.FromArgb(230, 44, 20), Color.FromArgb(211, 48, 26),
-        Color.FromArgb(231, 44, 20), Color.FromArgb(222, 52, 30), Color.FromArgb(224, 57, 32),
-        Color.FromArgb(232, 54, 27), Color.FromArgb(227, 57, 31), Color.FromArgb(244, 55, 25),
-        Color.FromArgb(243, 54, 24), Color.FromArgb(230, 45, 21), Color.FromArgb(230, 44, 34),
-        Color.FromArgb(241, 53, 23), Color.FromArgb(236, 51, 23), Color.FromArgb(234, 60, 48)}
-
-    Public Shared ReadOnly Pury1_N2 As Color() = New Color(28) {Color.FromArgb(216, 42, 34), Color.FromArgb(0, 255, 19),
-        Color.FromArgb(222, 71, 56), Color.FromArgb(240, 86, 60), Color.FromArgb(240, 86, 60),
-        Color.FromArgb(227, 72, 56), Color.FromArgb(238, 88, 63), Color.FromArgb(235, 34, 62),
-        Color.FromArgb(235, 33, 62), Color.FromArgb(238, 38, 64), Color.FromArgb(237, 38, 64),
-        Color.FromArgb(240, 40, 65), Color.FromArgb(233, 31, 60), Color.FromArgb(225, 91, 75),
-        Color.FromArgb(208, 82, 72), Color.FromArgb(219, 69, 55), Color.FromArgb(228, 46, 71),
-        Color.FromArgb(230, 34, 64), Color.FromArgb(234, 88, 71), Color.FromArgb(225, 70, 55),
-        Color.FromArgb(246, 58, 28), Color.FromArgb(203, 59, 41), Color.FromArgb(218, 75, 45),
-        Color.FromArgb(221, 48, 27), Color.FromArgb(216, 44, 25), Color.FromArgb(234, 47, 22),
-        Color.FromArgb(222, 48, 30), Color.FromArgb(227, 46, 26), Color.FromArgb(243, 55, 28)}
-#End Region
-#Region "MchLrn 1"
-    Public Shared ReadOnly Pury2_N1 As Color() = New Color(180) {Color.FromArgb(216, 42, 34), Color.FromArgb(227, 72, 56),
-        Color.FromArgb(225, 70, 55), Color.FromArgb(246, 58, 28), Color.FromArgb(203, 59, 41), Color.FromArgb(218, 75, 45),
-        Color.FromArgb(221, 48, 27), Color.FromArgb(216, 44, 25), Color.FromArgb(234, 47, 22), Color.FromArgb(222, 48, 30),
-Color.FromArgb(227, 46, 26), Color.FromArgb(243, 55, 28), Color.FromArgb(216, 42, 34), Color.FromArgb(222, 71, 56),
-Color.FromArgb(208, 82, 72), Color.FromArgb(219, 69, 55), Color.FromArgb(228, 46, 71), Color.FromArgb(230, 34, 64),
-Color.FromArgb(234, 88, 71), Color.FromArgb(225, 70, 55), Color.FromArgb(203, 59, 41), Color.FromArgb(218, 75, 45),
-Color.FromArgb(234, 47, 22), Color.FromArgb(222, 48, 30), Color.FromArgb(227, 46, 26), Color.FromArgb(243, 55, 28),
-Color.FromArgb(216, 42, 34), Color.FromArgb(222, 71, 56), Color.FromArgb(240, 86, 60), Color.FromArgb(227, 72, 56),
-Color.FromArgb(238, 88, 63), Color.FromArgb(235, 34, 62), Color.FromArgb(235, 33, 62), Color.FromArgb(238, 38, 64),
-Color.FromArgb(237, 38, 64), Color.FromArgb(240, 40, 65), Color.FromArgb(225, 91, 75), Color.FromArgb(208, 82, 72),
-Color.FromArgb(219, 69, 55), Color.FromArgb(228, 46, 71), Color.FromArgb(230, 34, 64), Color.FromArgb(234, 88, 71),
-Color.FromArgb(225, 70, 55), Color.FromArgb(246, 58, 28), Color.FromArgb(203, 59, 41), Color.FromArgb(218, 75, 45),
-Color.FromArgb(221, 48, 27), Color.FromArgb(216, 44, 25), Color.FromArgb(234, 47, 22), Color.FromArgb(222, 48, 30),
-Color.FromArgb(227, 46, 26), Color.FromArgb(243, 55, 28), Color.FromArgb(216, 42, 34), Color.FromArgb(222, 71, 56),
-Color.FromArgb(240, 86, 60), Color.FromArgb(227, 72, 56), Color.FromArgb(238, 88, 63), Color.FromArgb(235, 34, 62),
-Color.FromArgb(235, 33, 62), Color.FromArgb(238, 38, 64), Color.FromArgb(237, 38, 64), Color.FromArgb(240, 40, 65),
-Color.FromArgb(233, 31, 60), Color.FromArgb(225, 91, 75), Color.FromArgb(208, 82, 72), Color.FromArgb(219, 69, 55),
-Color.FromArgb(228, 46, 71), Color.FromArgb(230, 34, 64), Color.FromArgb(234, 88, 71), Color.FromArgb(225, 70, 55),
-Color.FromArgb(246, 58, 28), Color.FromArgb(203, 59, 41), Color.FromArgb(218, 75, 45), Color.FromArgb(221, 48, 27),
-Color.FromArgb(216, 44, 25), Color.FromArgb(234, 47, 22), Color.FromArgb(222, 48, 30), Color.FromArgb(227, 46, 26),
-Color.FromArgb(243, 55, 28), Color.FromArgb(216, 42, 34), Color.FromArgb(222, 71, 56), Color.FromArgb(240, 86, 60),
-Color.FromArgb(227, 72, 56), Color.FromArgb(238, 88, 63), Color.FromArgb(235, 34, 62), Color.FromArgb(235, 33, 62),
-Color.FromArgb(238, 38, 64), Color.FromArgb(237, 38, 64), Color.FromArgb(240, 40, 65), Color.FromArgb(233, 31, 60),
-Color.FromArgb(225, 91, 75), Color.FromArgb(208, 82, 72), Color.FromArgb(219, 69, 55), Color.FromArgb(228, 46, 71),
-Color.FromArgb(230, 34, 64), Color.FromArgb(234, 88, 71), Color.FromArgb(225, 70, 55), Color.FromArgb(203, 59, 41),
-Color.FromArgb(218, 75, 45), Color.FromArgb(221, 48, 27), Color.FromArgb(216, 44, 25), Color.FromArgb(234, 47, 22),
-Color.FromArgb(222, 48, 30), Color.FromArgb(227, 46, 26), Color.FromArgb(243, 55, 28), Color.FromArgb(216, 42, 34),
-Color.FromArgb(222, 71, 56), Color.FromArgb(240, 86, 60), Color.FromArgb(240, 86, 60), Color.FromArgb(227, 72, 56),
-Color.FromArgb(238, 88, 63), Color.FromArgb(235, 34, 62), Color.FromArgb(235, 33, 62), Color.FromArgb(238, 38, 64),
-Color.FromArgb(237, 38, 64), Color.FromArgb(240, 40, 65), Color.FromArgb(233, 31, 60), Color.FromArgb(225, 91, 75),
-Color.FromArgb(208, 82, 72), Color.FromArgb(219, 69, 55), Color.FromArgb(228, 46, 71), Color.FromArgb(230, 34, 64),
-Color.FromArgb(234, 88, 71), Color.FromArgb(225, 70, 55), Color.FromArgb(246, 58, 28), Color.FromArgb(203, 59, 41),
-Color.FromArgb(218, 75, 45), Color.FromArgb(221, 48, 27), Color.FromArgb(216, 44, 25), Color.FromArgb(234, 47, 22),
-Color.FromArgb(222, 48, 30), Color.FromArgb(227, 46, 26), Color.FromArgb(243, 55, 28), Color.FromArgb(216, 42, 34),
-Color.FromArgb(222, 71, 56), Color.FromArgb(240, 86, 60), Color.FromArgb(240, 86, 60), Color.FromArgb(227, 72, 56),
-Color.FromArgb(238, 38, 64), Color.FromArgb(237, 38, 64), Color.FromArgb(240, 40, 65), Color.FromArgb(225, 91, 75),
-Color.FromArgb(208, 82, 72), Color.FromArgb(219, 69, 55), Color.FromArgb(228, 46, 71), Color.FromArgb(230, 34, 64),
-Color.FromArgb(234, 88, 71), Color.FromArgb(225, 70, 55), Color.FromArgb(246, 58, 28), Color.FromArgb(203, 59, 41),
-Color.FromArgb(218, 75, 45), Color.FromArgb(221, 48, 27), Color.FromArgb(216, 44, 25), Color.FromArgb(234, 47, 22),
-Color.FromArgb(222, 48, 30), Color.FromArgb(227, 46, 26), Color.FromArgb(243, 55, 28), Color.FromArgb(216, 42, 34),
-Color.FromArgb(222, 71, 56), Color.FromArgb(225, 91, 75), Color.FromArgb(208, 82, 72), Color.FromArgb(219, 69, 55),
-Color.FromArgb(246, 58, 28), Color.FromArgb(203, 59, 41), Color.FromArgb(218, 75, 45), Color.FromArgb(221, 48, 27),
-Color.FromArgb(222, 48, 30), Color.FromArgb(227, 46, 26), Color.FromArgb(243, 55, 28), Color.FromArgb(216, 42, 34),
-Color.FromArgb(222, 71, 56), Color.FromArgb(227, 72, 56), Color.FromArgb(225, 91, 75), Color.FromArgb(208, 82, 72),
-Color.FromArgb(218, 75, 45), Color.FromArgb(221, 48, 27), Color.FromArgb(216, 44, 25), Color.FromArgb(234, 47, 22),
-Color.FromArgb(222, 48, 30), Color.FromArgb(227, 46, 26), Color.FromArgb(243, 55, 28)}
-#End Region
-    Public Sub New()
-    End Sub
-    Public Shared Function ColorToInt(Color As Color) As Integer
-        Return 65536 * Color.R + 256 * Color.G + Color.B
-    End Function
-
-    Public Shared Function IntToColor(ColorInt As Integer) As Color
-        Dim A As Byte = (ColorInt >> 24) And 255
-        Dim R As Byte = (ColorInt >> 16) And 255
-        Dim G As Byte = (ColorInt >> 8) And 255
-        Dim B As Byte = ColorInt And 255
-
-        Return Color.FromArgb(A, R, G, B)
-    End Function
 End Class

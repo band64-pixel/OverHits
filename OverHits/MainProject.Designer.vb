@@ -108,7 +108,7 @@ Partial Class MainProject
         '
         'ColorSearch_Timer
         '
-        Me.ColorSearch_Timer.Interval = 1
+        Me.ColorSearch_Timer.Interval = 30
         '
         'AdvButton
         '
@@ -139,7 +139,7 @@ Partial Class MainProject
         '
         'MchLrn_Timer
         '
-        Me.MchLrn_Timer.Interval = 1
+        Me.MchLrn_Timer.Interval = 30
         '
         'ClickGroup
         '

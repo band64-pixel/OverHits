@@ -1,0 +1,14 @@
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\bin\Debug 2.0\NVIDIA GeForce Experience.exe.config
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\bin\Debug 2.0\NVIDIA GeForce Experience.exe
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\bin\Debug 2.0\NVIDIA GeForce Experience.pdb
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\bin\Debug 2.0\NVIDIA GeForce Experience.xml
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Debug 2.0\OverHits.vbprojAssemblyReference.cache
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Debug 2.0\OvaHats.AdvancedMode.resources
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Debug 2.0\OvaHats.Information.resources
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Debug 2.0\OvaHats.MainProject.resources
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Debug 2.0\OvaHats.Resources.resources
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Debug 2.0\OverHits.vbproj.GenerateResource.cache
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Debug 2.0\OverHits.vbproj.CoreCompileInputs.cache
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Debug 2.0\NVIDIA GeForce Experience.exe
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Debug 2.0\NVIDIA GeForce Experience.xml
+C:\Users\gobac\Documents\Visual Studio 2019\Projects\OverHits\OverHits\obj\Debug 2.0\NVIDIA GeForce Experience.pdb
