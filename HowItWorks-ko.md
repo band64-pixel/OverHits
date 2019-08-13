@@ -12,17 +12,17 @@
 ([이 레포지토리](https://github.com/jpxue/Overwatch-Aim-Assist)를 참고해주세요)
 만약 그 픽셀의 색이 빨간색이라면, mouse_event()를 호출합니다. (user32.dll에서 호출, x y 포인트의 연산 필요) 그러면 자동으로 적의 헤드를 조준하게 됩니다.
 
-# 블리자드가 에임핵 유저를 잡는 원리
+# 오버워치가 에임핵 유저를 잡는 원리
 
 ### [이 이슈](https://github.com/jpxue/Overwatch-Aim-Assist/issues/30)를 참고해주세요. 읽으면 이 텍스트들을 읽기 좀 더 쉬워질 겁니다.
 ### [이 자료](https://www.kdata.or.kr/info/info_04_view.html?field=&keyword=&type=techreport&page=128&dbnum=128563)도 참고해주세요.
 ### [정말 도움이 되는 글](https://crefunx.tistory.com/13)도 참고해주시면 감사하겠습니다..!
 ![AutoMouseAPI_1-ko](http://www.dbguide.net/images/know/tech/091203_cc3.jpg)
 
-블리자드는 좀 복잡한 훅을 통해 mouse_event() 함수를 감지합니다. 예를 들면, mouse_evnet 함수는 SendInput() 함수를 사용하죠.
-블리자드는 훅을 통해 SendInput() 함수를 감지합니다.
+오버워치는 좀 복잡한 훅을 통해 mouse_event() 함수를 감지합니다. 예를 들면, mouse_evnet 함수는 SendInput() 함수를 사용하죠.
+오버워치는 훅을 통해 SendInput() 함수를 감지합니다.
 
-만약 블리자드가 이 함수들을 훅했다면, 오버워치는 스크린샷을 캡처할 동안 화면을 검게 만듭니다.
+만약 오버워치가 이 함수들을 훅했다면, 오버워치는 스크린샷을 캡처할 동안 화면을 검게 만듭니다.
 그러면, 당신의 프로파일은 로그에 '핵 유저'로 기록될 겁니다. 만약 이 방법이 특정한 수에 도달하면, 당신은 오버워치 밴을 당할 겁니다.
 
 ## 어떻게 우회를 하죠?
